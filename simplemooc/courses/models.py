@@ -14,7 +14,8 @@ class Course(models.Model):
 
     name = models.CharField('Nome', max_length=100)
     slug = models.SlugField('Atalho')
-    description = models.TextField('Descrição', blank=True)
+    description = models.TextField('Descrição Simples', blank=True)
+    about = models.TextField('Sobre o Curso', blank=True)
     start_date = models.DateField(
         'Data de Início', null=True, blank=True
     )
@@ -32,6 +33,10 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('courses:details', (), {'slug': self.slug})
 
     class Meta:
         verbose_name = 'Curso'
