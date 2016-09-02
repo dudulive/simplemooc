@@ -1,6 +1,6 @@
-from django.conf.urls import *
+from django.conf.urls import patterns, include, url
 
-urlpatterns = ['simplemooc.core.views',
+urlpatterns = patterns('simplemooc.core.views',
     url(r'^$', 'home', name='home'),
     url(r'^contato/$', 'contact', name='contact'),
-]
+)
